@@ -1,4 +1,4 @@
-package com.epul.projetoeuvre.repository;
+package com.epul.projetoeuvre.dao;
 
 import com.epul.projetoeuvre.entity.Adherent;
 import org.springframework.data.jpa.repository.JpaRepository;
