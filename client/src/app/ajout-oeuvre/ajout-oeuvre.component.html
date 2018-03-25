@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-xs-2">
+    <h2>
+      <a routerLink="/home">
+        <span class="glyphicon glyphicon-circle-arrow-left blue"></span>
+      </a>
+    </h2>
+  </div>
+  <div class="col-xs-8">
+    <h2 class="center">
+      Ajout d'une Oeuvre
+    </h2>
+  </div>
+</div>
+
+<br/>
+
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <form name='ajouterOeuvre' method="post" action="insererOeuvre.htm">
+      <div class="row">
+        <div class="col-xs-4">
+          <label for="titre">Titre de l'oeuvre </label>
+        </div>
+        <div class="col-xs-8">
+          <input name="titre" class="form-control" id="titre" value="">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-4">
+          <label for="prix">Prix </label>
+        </div>
+        <div class="col-xs-8">
+          <input type="number" name="prix" class="form-control" id="prix" value="">
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-4">
+          <label for="proprietaire">Propriétaire </label>
+        </div>
+        <div class="col-xs-8">
+          <select name="idProprietaire" class="form-control" id="proprietaire" required>
+            <!-- All prop
+            <c:forEach items="${mesProprietaires}" var="prop">
+              <option value="${prop.idProprietaire}">${prop.prenomProprietaire} ${prop.nomProprietaire}</option>
+            </c:forEach>-->
+          </select>
+        </div>
+      </div>
+
+      <br/>
+
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+          <!-- Bouton Ajouter -->
+          <input class="btn btn-info btn-lg" type="submit" name="bt" value="Ajouter">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
