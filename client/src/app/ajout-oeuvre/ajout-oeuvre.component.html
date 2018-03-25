@@ -43,10 +43,9 @@
         </div>
         <div class="col-xs-8">
           <select name="idProprietaire" class="form-control" id="proprietaire" required>
-            <!-- All prop
-            <c:forEach items="${mesProprietaires}" var="prop">
-              <option value="${prop.idProprietaire}">${prop.prenomProprietaire} ${prop.nomProprietaire}</option>
-            </c:forEach>-->
+            <option *ngFor="let prop of proprietaires" value="{{prop.idProprietaire}}">
+              {{prop.prenomProprietaire}} {{prop.nomProprietaire}}
+            </option>
           </select>
         </div>
       </div>

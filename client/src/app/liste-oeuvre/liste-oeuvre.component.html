@@ -49,12 +49,12 @@
         {{oeuvre.proprietaire.nomProprietaire}}
       </td>
       <td>
-        <a href="reserverMenu.htm?idOeuvre=${item.idOeuvrevente}">
+        <a routerLink="/reserverOeuvre/{{oeuvre.idOeuvrevente}}">
           <input type="button" class="btn btn-info btn-lg" value="Réserver"/>
         </a>
         &nbsp;
         &nbsp;
-        <a href="form_modifierOeuvre.htm?idOeuvre=${item.idOeuvrevente}">
+        <a routerLink="/modifierOeuvre/{{oeuvre.idOeuvrevente}}">
           <input type="button" class="btn btn-info btn-lg" value="Modifier"/>
         </a>
       </td>

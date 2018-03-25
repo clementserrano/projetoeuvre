@@ -1,12 +1,9 @@
 package com.epul.projetoeuvre.controller;
 
-import com.epul.projetoeuvre.entity.Adherent;
 import com.epul.projetoeuvre.dao.AdherentRepository;
+import com.epul.projetoeuvre.entity.Adherent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,11 @@ public class AdherentController {
     @CrossOrigin(origins = "http://localhost:4200")
     public List<Adherent> getAll() {
         return adherentRepository.findAll();
+    }
+
+    @PostMapping("/add")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void add(Adherent adherent) {
+        adherentRepository.save(adherent);
     }
 }

@@ -9,7 +9,7 @@
 <div class="row" style="text-align: left">
   <form name='reservation' method="post" action="reserverOeuvre.htm">
     <!-- Champ caché -->
-    <input type="hidden" name="idOeuvre" value="${oeuvre.idOeuvrevente}">
+    <input type="hidden" name="idOeuvre" value="{{oeuvre.idOeuvrevente}}">
 
     <!-- Champs désactivés -->
     <div class="row">
@@ -19,7 +19,7 @@
         </label>
       </div>
       <div class="col-xs-8">
-        <input class="form-control" name="titre" id="titre" value="${oeuvre.titreOeuvrevente}" readonly>
+        <input class="form-control" name="titre" id="titre" value="{{oeuvre.titreOeuvrevente}}" readonly>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
         </label>
       </div>
       <div class="col-xs-8">
-        <input class="form-control" name="prix" id="prix" value="${oeuvre.prixOeuvrevente}" readonly>
+        <input class="form-control" name="prix" id="prix" value="{{oeuvre.prixOeuvrevente}}" readonly>
       </div>
     </div>
 
@@ -53,9 +53,9 @@
       </div>
       <div class="col-xs-8">
         <select class="form-control" name="idAdherent" id="adherent" required>
-          <!--<c:forEach items="${mesAdherents}" var="adherent">
-            <option value="${adherent.idAdherent}">${adherent.prenomAdherent} ${adherent.nomAdherent}</option>
-          </c:forEach>-->
+          <option *ngFor="let adherent of adherents" value="{{adherent.idAdherent}}">{{adherent.prenomAdherent}}
+            {{adherent.nomAdherent}}
+          </option>
         </select>
       </div>
     </div>
@@ -68,7 +68,7 @@
         <input class="btn btn-primary" type="submit" name="bt" value="Réserver"/>
       </div>
       <div class="col-xs-4 col-xs-offset-2">
-        <a class="btn btn-light btn-lg" href="listerOeuvre.htm">Annuler</a>
+        <a class="btn btn-light btn-lg" routerLink="/listerOeuvre">Annuler</a>
       </div>
     </div>
   </form>

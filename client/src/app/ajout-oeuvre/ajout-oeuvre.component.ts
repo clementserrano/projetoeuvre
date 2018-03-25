@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Title} from "@angular/platform-browser";
+import {ProprietaireService} from "../shared/proprietaire/proprietaire.service";
 
 @Component({
   selector: 'app-ajout-oeuvre',
@@ -8,10 +9,17 @@ import {Title} from "@angular/platform-browser";
 })
 export class AjoutOeuvreComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  proprietaires: Array<any>;
+
+  constructor(private proprietaireService: ProprietaireService, private titleService: Title) {
+  }
 
   ngOnInit() {
     this.titleService.setTitle("Ajouter une Oeuvre");
+
+    this.proprietaireService.getAll().subscribe(data => {
+      this.proprietaires = data;
+    })
   }
 
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Title} from "@angular/platform-browser";
+import {OeuvreventeService} from "../shared/oeuvrevente/oeuvrevente.service";
 
 @Component({
   selector: 'app-liste-oeuvre',
@@ -8,10 +9,17 @@ import {Title} from "@angular/platform-browser";
 })
 export class ListeOeuvreComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  oeuvres: Array<any>;
+
+  constructor(private oeuvreventeService: OeuvreventeService, private titleService: Title) {
+  }
 
   ngOnInit() {
     this.titleService.setTitle("Affichage de toutes les oeuvres en vente");
+
+    this.oeuvreventeService.getAll().subscribe(data => {
+      this.oeuvres = data;
+    })
   }
 
 }

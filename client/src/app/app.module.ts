@@ -24,6 +24,8 @@ export const routes: Routes = [
   {path: 'ajouterOeuvre', component: AjoutOeuvreComponent},
   {path: 'listerAdherent', component: ListeAdherentComponent},
   {path: 'listerOeuvre', component: ListeOeuvreComponent},
+  {path: 'modifierOeuvre/:idOeuvre', component: ModifieOeuvreComponent},
+  {path: 'reserverOeuvre/:idOeuvre', component: ReserveOeuvreComponent},
   {path: '', redirectTo: '/accueil', pathMatch: 'full'},
   {path: '**', redirectTo: '/accueil', pathMatch: 'full'}
 ]
