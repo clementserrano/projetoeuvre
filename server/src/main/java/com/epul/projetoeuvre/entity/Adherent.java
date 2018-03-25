@@ -16,7 +16,7 @@ import javax.persistence.Id;
 public class Adherent {
     @Id @GeneratedValue
     private Long idAdherent;
-    private String nomAdherent;
-    private String prenomAdherent;
+    private @NonNull String nomAdherent;
+    private @NonNull String prenomAdherent;
     private String villeAdherent;
 }
