@@ -20,7 +20,7 @@ public class ReservationController {
 
     @PostMapping("/add")
     @CrossOrigin(origins = "http://localhost:4200")
-    public void add(Reservation reservation) {
-        reservationRepository.save(reservation);
+    public Reservation add(Reservation reservation) {
+        return reservationRepository.save(reservation);
     }
 }

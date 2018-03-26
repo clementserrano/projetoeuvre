@@ -12,7 +12,7 @@ export class AdherentService {
     return this.http.get('//localhost:8080/adherent/getAll');
   }
 
-  add(adherent): void {
-    this.http.post('//localhost:8080/adherent/add', adherent);
+  add(adherent): Observable<any> {
+    return this.http.post('//localhost:8080/adherent/add', adherent);
   }
 }

@@ -16,8 +16,8 @@ export class OeuvreventeService {
     return this.http.get('//localhost:8080/oeuvrevente/get/' + idOeuvrevente);
   }
 
-  add(oeuvrevente): void {
-    this.http.post('//localhost:8080/oeuvrevente/add', oeuvrevente);
+  add(oeuvrevente): Observable<any> {
+    return this.http.post('//localhost:8080/oeuvrevente/add', oeuvrevente);
   }
 
 }

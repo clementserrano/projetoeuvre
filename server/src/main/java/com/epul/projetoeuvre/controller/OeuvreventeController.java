@@ -30,7 +30,7 @@ public class OeuvreventeController {
 
     @PostMapping("/add")
     @CrossOrigin(origins = "http://localhost:4200")
-    public void add(Oeuvrevente oeuvrevente) {
-        oeuvreventeRepository.save(oeuvrevente);
+    public Oeuvrevente add(Oeuvrevente oeuvrevente) {
+        return oeuvreventeRepository.save(oeuvrevente);
     }
 }
