@@ -19,6 +19,7 @@ export class ModifieOeuvreComponent implements OnInit {
               private titleService: Title,
               private oeuvreventeService: OeuvreventeService,
               private proprietaireService: ProprietaireService) {
+    this.oeuvre = {};
   }
 
   ngOnInit() {

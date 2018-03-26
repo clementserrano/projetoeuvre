@@ -21,6 +21,7 @@ export class ReserveOeuvreComponent implements OnInit {
               private oeuvreventeService: OeuvreventeService,
               private reservationService: ReservationService,
               private adherentService: AdherentService) {
+    this.oeuvre = {};
   }
 
   ngOnInit() {

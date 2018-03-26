@@ -22,9 +22,9 @@ public class OeuvreventeController {
         return oeuvreventeRepository.findAll();
     }
 
-    @GetMapping("/get")
+    @GetMapping("/get/{idOeuvrevente}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Oeuvrevente get(Long idOeuvrevente) {
+    public Oeuvrevente get(@PathVariable Long idOeuvrevente) {
         return oeuvreventeRepository.getOne(idOeuvrevente);
     }
 
