@@ -1,5 +1,7 @@
 # Projet Oeuvre
 
+Node v9.1.0 requis
+
 Pour déployer l'application sur [http://localhost:8080](http://localhost:8080)
 blabla ...
 
