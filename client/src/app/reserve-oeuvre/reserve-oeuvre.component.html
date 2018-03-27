@@ -7,7 +7,7 @@
 </div>
 
 <div class="row" style="text-align: left">
-  <form name='reservation' method="post" action="reserverOeuvre.htm">
+  <form>
     <!-- Champ caché -->
     <input type="hidden" name="idOeuvre" value="{{oeuvre.idOeuvrevente}}">
 
@@ -53,7 +53,7 @@
       </div>
       <div class="col-xs-8">
         <select class="form-control" name="idAdherent" id="adherent" required>
-          <option *ngFor="let adherent of adherents" value="{{adherent.idAdherent}}">{{adherent.prenomAdherent}}
+          <option *ngFor="let adherent of adherents" [value]="adherent.idAdherent">{{adherent.prenomAdherent}}
             {{adherent.nomAdherent}}
           </option>
         </select>
@@ -65,7 +65,7 @@
     <div class="row">
       <div class="col-xs-4 col-xs-offset-1">
         <!-- Boutons Ajouter -->
-        <input class="btn btn-primary" type="submit" name="bt" value="Réserver"/>
+        <button class="btn btn-primary" type="submit" name="bt" value="Réserver"></button>
       </div>
       <div class="col-xs-4 col-xs-offset-2">
         <a class="btn btn-light btn-lg" routerLink="/listerOeuvre">Annuler</a>

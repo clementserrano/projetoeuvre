@@ -10,10 +10,6 @@ import {AdherentService} from "../shared/adherent/adherent.service";
 })
 export class AjoutAdherentComponent implements OnInit {
 
-  txtnom;
-  txtprenom;
-  txtville;
-
   constructor(private router: Router,
               private adherentService: AdherentService,
               private titleService: Title) {
@@ -23,13 +19,30 @@ export class AjoutAdherentComponent implements OnInit {
     this.titleService.setTitle("Ajouter un Adhérent");
   }
 
-  onSubmit() {
-    var adherent = {
-      nomAdherent: this.txtnom,
-      prenomAdherent: this.txtprenom,
-      villeAdherent: this.txtville,
-    }
-    this.adherentService.add(adherent);
+  adherent = {
+    nomAdherent: "",
+    prenomAdherent: "",
+    villeAdherent: ""
+  }
+
+  result = {
+    status: "",
+    message: ""
+  }
+
+  addAdherent() {
+    console.log(this.diagnostic);
+    this.adherentService.add(this.adherent).subscribe(sucess => {
+      this.result.status = "success";
+      this.result.message = "L'adhérent a été ajouté avec succès !"
+    }, error => {
+      this.result.status = "error";
+      this.result.message = "Erreur : L'adhérent n'a pas pu être ajouté."
+    });
+  }
+
+  get diagnostic() {
+    return JSON.stringify(this.adherent);
   }
 
 }

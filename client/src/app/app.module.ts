@@ -17,6 +17,7 @@ import {ProprietaireService} from "./shared/proprietaire/proprietaire.service";
 import {OeuvreventeService} from "./shared/oeuvrevente/oeuvrevente.service";
 import {ReservationService} from "./shared/reservation/reservation.service";
 import {MenuComponent} from "./menu/menu.component";
+import {FormsModule} from "@angular/forms";
 
 export const routes: Routes = [
   {path: 'accueil', component: MenuComponent},
@@ -45,7 +46,8 @@ export const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   exports: [RouterModule],
   providers: [AdherentService, ProprietaireService, OeuvreventeService, ReservationService],

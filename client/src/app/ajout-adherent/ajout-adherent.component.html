@@ -15,43 +15,65 @@
 
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
-    <form name='identification' (ngSubmit)="onSubmit()">
+    <!--{{diagnostic}}-->
+    <form #ajouterAdherent="ngForm">
       <div class="row">
         <div class="col-xs-4">
-          <label for="nom">
+          <label for="nomAdherent">
             Nom de l'adhérent :
           </label>
         </div>
         <div class="col-xs-8">
-          <input class="form-control" type="text" name="txtnom" value="" id="nom" ngModel/>
+          <input class="form-control" type="text" name="nomAdherent" id="nomAdherent"
+                 required [(ngModel)]="adherent.nomAdherent" #nomAdherent="ngModel">
+          <div [hidden]="nomAdherent.valid || nomAdherent.pristine"
+               class="alert alert-danger">
+            Le nom de l'adhérent est requis.
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-4">
-          <label for="prenom">
+          <label for="prenomAdherent">
             Prenom de l'adhérent :
           </label>
         </div>
         <div class="col-xs-8">
-          <input class="form-control" type="text" name="txtprenom" id="prenom" ngModel/>
+          <input class="form-control" type="text" name="prenomAdherent" id="prenomAdherent"
+                 required [(ngModel)]="adherent.prenomAdherent" #prenomAdherent="ngModel">
+          <div [hidden]="prenomAdherent.valid || prenomAdherent.pristine"
+               class="alert alert-danger">
+            Le prénom de l'adhérent est requis.
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-4">
-          <label for="ville">
+          <label for="villeAdherent">
             Ville de l'adhérent :
           </label>
         </div>
         <div class="col-xs-8">
-          <input class="form-control" type="text" name="txtville" id="ville" ngModel/>
+          <input class="form-control" type="text" name="villeAdherent" id="villeAdherent"
+                 required [(ngModel)]="adherent.villeAdherent" #villeAdherent="ngModel">
+          <div [hidden]="villeAdherent.valid || villeAdherent.pristine"
+               class="alert alert-danger">
+            La ville de l'adhérent est requise.
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
           <!-- Boutons Ajouter -->
-          <input type="submit" name="bt" class="btn btn-info btn-lg" value="Ajouter"/>
+          <button type="submit" class="btn btn-info btn-lg" [disabled]="!ajouterAdherent.form.valid"
+                  (click)="addAdherent(); ajouterAdherent.reset();">Ajouter
+          </button>
         </div>
       </div>
     </form>
+    <div class="alert" [hidden]="result.status === '' && result.message === ''"
+         [ngClass]="{'alert-sucess': result.status === 'success', 'alert-danger': result.status === 'error'}">
+      {{result.message}}
+    </div>
   </div>
 </div>

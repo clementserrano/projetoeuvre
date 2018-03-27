@@ -44,7 +44,7 @@
         </div>
         <div class="col-xs-8">
           <select name="prop" class="form-control" id="proprio">
-            <option *ngFor="let proprio of proprietaires" value="{{proprio.idProprietaire}}">
+            <option *ngFor="let proprio of proprietaires" [value]="proprio.idProprietaire">
               {{proprio.prenomProprietaire}} {{proprio.nomProprietaire}}
             </option>
           </select>
