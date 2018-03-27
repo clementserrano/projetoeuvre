@@ -10,13 +10,18 @@ import javax.persistence.Id;
  * Created by clementserrano on 24/03/2018.
  */
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
-@ToString @EqualsAndHashCode
+@ToString
+@EqualsAndHashCode
 public class Adherent {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long idAdherent;
-    private @NonNull String nomAdherent;
-    private @NonNull String prenomAdherent;
+    private @NonNull
+    String nomAdherent;
+    private @NonNull
+    String prenomAdherent;
     private String villeAdherent;
 }

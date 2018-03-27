@@ -14,9 +14,11 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 public class Oeuvrevente {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long idOeuvrevente;
-    private @NonNull String titreOeuvrevente;
+    private @NonNull
+    String titreOeuvrevente;
     private String etatOeuvrevente;
     private Float prixOeuvrevente;
     @ManyToOne

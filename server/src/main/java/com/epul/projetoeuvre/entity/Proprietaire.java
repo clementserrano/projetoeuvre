@@ -19,6 +19,8 @@ public class Proprietaire {
     @Id
     @GeneratedValue
     private Long idProprietaire;
-    private @NonNull String nomProprietaire;
-    private @NonNull String prenomProprietaire;
+    private @NonNull
+    String nomProprietaire;
+    private @NonNull
+    String prenomProprietaire;
 }
