@@ -15,7 +15,7 @@ import javax.persistence.*;
 @EqualsAndHashCode
 public class Oeuvrevente {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idOeuvrevente;
     private @NonNull
     String titreOeuvrevente;
