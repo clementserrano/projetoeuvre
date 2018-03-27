@@ -7,41 +7,45 @@
 </div>
 
 <div class="row" style="text-align: left">
-  <form>
-    <!-- Champ caché -->
-    <input type="hidden" name="idOeuvre" value="{{oeuvre.idOeuvrevente}}">
-
+  <form #reserverOeuvre="ngForm">
     <!-- Champs désactivés -->
     <div class="row">
       <div class="col-xs-4">
-        <label for="titre">
+        <label for="titreOeuvrevente">
           Titre de l'œuvre :
         </label>
       </div>
       <div class="col-xs-8">
-        <input class="form-control" name="titre" id="titre" value="{{oeuvre.titreOeuvrevente}}" readonly>
+        <input class="form-control" type="text" name="titreOeuvrevente" id="titreOeuvrevente" readonly
+               required [(ngModel)]="reservation.oeuvrevente.titreOeuvrevente" #titreOeuvrevente="ngModel">
       </div>
     </div>
 
     <div class="row">
       <div class="col-xs-4">
-        <label for="prix">
+        <label for="prixOeuvrevente">
           Prix :
         </label>
       </div>
       <div class="col-xs-8">
-        <input class="form-control" name="prix" id="prix" value="{{oeuvre.prixOeuvrevente}}" readonly>
+        <input class="form-control" type="text" name="prixOeuvrevente" id="prixOeuvrevente" readonly
+               required [(ngModel)]="reservation.oeuvrevente.prixOeuvrevente" #prixOeuvrevente="ngModel">
       </div>
     </div>
 
     <div class="row">
       <div class="col-xs-4">
-        <label for="date">
+        <label for="dateReservation">
           Date Réservation :
         </label>
       </div>
       <div class="col-xs-8">
-        <input class="form-control" type="date" name="date" id="date" required>
+        <input class="form-control" type="date" name="dateReservation" id="dateReservation"
+               required [(ngModel)]="reservation.dateReservation" #dateReservation="ngModel">
+        <div [hidden]="dateReservation.valid || dateReservation.pristine"
+             class="alert alert-danger">
+          La date de la réservation est requise.
+        </div>
       </div>
     </div>
 
@@ -52,11 +56,16 @@
         </label>
       </div>
       <div class="col-xs-8">
-        <select class="form-control" name="idAdherent" id="adherent" required>
-          <option *ngFor="let adherent of adherents" [value]="adherent.idAdherent">{{adherent.prenomAdherent}}
-            {{adherent.nomAdherent}}
+        <select class="form-control" name="adherent" id="adherent" required
+                [(ngModel)]="reservation.adherent" #adherent="ngModel">
+          <option *ngFor="let adherent of adherents" [value]="adherent">
+            {{adherent.prenomAdherent}} {{adherent.nomAdherent}}
           </option>
         </select>
+        <div [hidden]="adherent.valid || adherent.pristine"
+             class="alert alert-danger">
+          L'adhérent de la réservation est requis.
+        </div>
       </div>
     </div>
 
@@ -65,7 +74,9 @@
     <div class="row">
       <div class="col-xs-4 col-xs-offset-1">
         <!-- Boutons Ajouter -->
-        <button class="btn btn-primary" type="submit" name="bt" value="Réserver"></button>
+        <button class="btn btn-info btn-lg" type="submit" name="bt"
+                (click)="bookOeuvre(); reserverOeuvre.reset();">Réserver
+        </button>
       </div>
       <div class="col-xs-4 col-xs-offset-2">
         <a class="btn btn-light btn-lg" routerLink="/listerOeuvre">Annuler</a>

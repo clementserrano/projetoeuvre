@@ -31,8 +31,7 @@ export class AjoutAdherentComponent implements OnInit {
   }
 
   addAdherent() {
-    console.log(this.diagnostic);
-    this.adherentService.add(this.adherent).subscribe(sucess => {
+    this.adherentService.add(this.adherent).subscribe(success => {
       this.result.status = "success";
       this.result.message = "L'adhérent a été ajouté avec succès !"
     }, error => {
@@ -40,9 +39,4 @@ export class AjoutAdherentComponent implements OnInit {
       this.result.message = "Erreur : L'adhérent n'a pas pu être ajouté."
     });
   }
-
-  get diagnostic() {
-    return JSON.stringify(this.adherent);
-  }
-
 }

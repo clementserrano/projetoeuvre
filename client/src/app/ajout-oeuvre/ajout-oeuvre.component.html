@@ -17,23 +17,32 @@
 
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
-    <form>
+    <form #ajouterOeuvre="ngForm">
       <div class="row">
         <div class="col-xs-4">
-          <label for="titre">Titre de l'oeuvre </label>
+          <label for="titreOeuvrevente">Titre de l'oeuvre </label>
         </div>
         <div class="col-xs-8">
-          <input name="titre" class="form-control" id="titre" value="">
+          <input class="form-control" type="text" name="titreOeuvrevente" id="titreOeuvrevente"
+                 required [(ngModel)]="oeuvrevente.titreOeuvrevente" #titreOeuvrevente="ngModel">
+          <div [hidden]="titreOeuvrevente.valid || titreOeuvrevente.pristine"
+               class="alert alert-danger">
+            Le titre de l'oeuvre est requis.
+          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-xs-4">
-          <label for="prix">Prix </label>
+          <label for="prixOeuvrevente">Prix </label>
         </div>
         <div class="col-xs-8">
-          <input type="number" name="prix" class="form-control" id="prix" value="">
-
+          <input class="form-control" type="text" name="prixOeuvrevente" id="prixOeuvrevente"
+                 required [(ngModel)]="oeuvrevente.prixOeuvrevente" #prixOeuvrevente="ngModel">
+          <div [hidden]="prixOeuvrevente.valid || prixOeuvrevente.pristine"
+               class="alert alert-danger">
+            Le prix de l'oeuvre est requis.
+          </div>
         </div>
       </div>
 
@@ -42,11 +51,16 @@
           <label for="proprietaire">Propriétaire </label>
         </div>
         <div class="col-xs-8">
-          <select name="idProprietaire" class="form-control" id="proprietaire" required>
-            <option *ngFor="let prop of proprietaires" [value]="prop.idProprietaire">
-              {{prop.prenomProprietaire}} {{prop.nomProprietaire}}
+          <select class="form-control" name="proprietaire" id="proprietaire" required
+                  [(ngModel)]="oeuvrevente.proprietaire" #proprietaire="ngModel">
+            <option *ngFor="let proprietaire of proprietaires" [value]="proprietaire">
+              {{proprietaire.prenomProprietaire}} {{proprietaire.nomProprietaire}}
             </option>
           </select>
+          <div [hidden]="proprietaire.valid || proprietaire.pristine"
+               class="alert alert-danger">
+            Le propriétaire de l'oeuvre est requis.
+          </div>
         </div>
       </div>
 
@@ -55,7 +69,9 @@
       <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
           <!-- Bouton Ajouter -->
-          <button class="btn btn-info btn-lg" type="submit" name="bt" value="Ajouter"></button>
+          <button class="btn btn-info btn-lg" type="submit" name="bt"
+                  (click)="addOeuvre(); ajouterOeuvre.reset();">Ajouter
+          </button>
         </div>
       </div>
     </form>

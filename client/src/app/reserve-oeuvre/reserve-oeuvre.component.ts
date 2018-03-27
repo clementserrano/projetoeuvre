@@ -13,7 +13,7 @@ import {AdherentService} from "../shared/adherent/adherent.service";
 export class ReserveOeuvreComponent implements OnInit {
 
   idOeuvre: number;
-  oeuvre: any;
+  reservation: any;
   adherents: Array<any>;
 
   constructor(private route: ActivatedRoute,
@@ -21,7 +21,11 @@ export class ReserveOeuvreComponent implements OnInit {
               private oeuvreventeService: OeuvreventeService,
               private reservationService: ReservationService,
               private adherentService: AdherentService) {
-    this.oeuvre = {};
+    this.reservation = {
+      oeuvrevente: {},
+      adherent: {},
+      dateReservation: null
+    }
   }
 
   ngOnInit() {
@@ -36,8 +40,24 @@ export class ReserveOeuvreComponent implements OnInit {
     })
 
     this.oeuvreventeService.get(this.idOeuvre).subscribe(data => {
-      this.oeuvre = data;
+      this.reservation.oeuvrevente = data;
     })
+  }
+
+  result = {
+    status: "",
+    message: ""
+  }
+
+  bookOeuvre(){
+    this.reservation.oeuvrevente.etatOeuvrevente = 'R';
+    this.reservationService.add(this.reservation).subscribe(success => {
+      this.result.status = "success";
+      this.result.message = "L'oeuvre a été réservée avec succès !"
+    }, error => {
+      this.result.status = "error";
+      this.result.message = "Erreur : L'oeuvre n'a pas pu être réservée."
+    });
   }
 
 }

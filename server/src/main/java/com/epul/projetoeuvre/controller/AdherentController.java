@@ -25,7 +25,7 @@ public class AdherentController {
 
     @PostMapping("/add")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Adherent add(Adherent adherent) {
+    public Adherent add(@RequestBody Adherent adherent) {
         return adherentRepository.save(adherent);
     }
 }

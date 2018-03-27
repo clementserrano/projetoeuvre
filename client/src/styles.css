@@ -161,10 +161,10 @@ label {
   display:         flex;
 }
 
-.ng-valid[required], .ng-valid.required  {
+.ng-valid[required]:not([readonly]), .ng-valid.required:not([readonly])  {
   border-left: 5px solid #42A948; /* green */
 }
 
-.ng-invalid:not(form)  {
+.ng-invalid:not(form):not([readonly]) {
   border-left: 5px solid #a94442; /* red */
 }

@@ -15,7 +15,6 @@
 
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
-    <!--{{diagnostic}}-->
     <form #ajouterAdherent="ngForm">
       <div class="row">
         <div class="col-xs-4">
@@ -72,7 +71,7 @@
       </div>
     </form>
     <div class="alert" [hidden]="result.status === '' && result.message === ''"
-         [ngClass]="{'alert-sucess': result.status === 'success', 'alert-danger': result.status === 'error'}">
+         [ngClass]="{'alert-success': result.status === 'success', 'alert-danger': result.status === 'error'}">
       {{result.message}}
     </div>
   </div>

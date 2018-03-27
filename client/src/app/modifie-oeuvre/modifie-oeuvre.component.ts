@@ -12,14 +12,14 @@ import {ProprietaireService} from "../shared/proprietaire/proprietaire.service";
 export class ModifieOeuvreComponent implements OnInit {
 
   idOeuvre: number;
-  oeuvre: any;
+  oeuvrevente: any;
   proprietaires: Array<any>;
 
   constructor(private route: ActivatedRoute,
               private titleService: Title,
               private oeuvreventeService: OeuvreventeService,
               private proprietaireService: ProprietaireService) {
-    this.oeuvre = {};
+    this.oeuvrevente = {};
   }
 
   ngOnInit() {
@@ -34,8 +34,23 @@ export class ModifieOeuvreComponent implements OnInit {
     })
 
     this.oeuvreventeService.get(this.idOeuvre).subscribe(data => {
-      this.oeuvre = data;
+      this.oeuvrevente = data;
     })
+  }
+
+  result = {
+    status: "",
+    message: ""
+  }
+
+  modifyOeuvre(){
+    this.oeuvreventeService.add(this.oeuvrevente).subscribe(success => {
+      this.result.status = "success";
+      this.result.message = "L'oeuvre a été modifiée avec succès !"
+    }, error => {
+      this.result.status = "error";
+      this.result.message = "Erreur : L'oeuvre n'a pas pu être modifiée."
+    });
   }
 
 }
