@@ -10,11 +10,18 @@ import {OeuvreventeService} from "../shared/oeuvrevente/oeuvrevente.service";
 })
 export class AjoutOeuvreComponent implements OnInit {
 
+  oeuvrevente: any;
   proprietaires: Array<any>;
 
   constructor(private proprietaireService: ProprietaireService,
               private oeuvreventeService: OeuvreventeService,
               private titleService: Title) {
+    this.oeuvrevente = {
+      titreOeuvrevente: "",
+      prixOeuvrevente: "",
+      proprietaire: {},
+      etatOeuvrevente: 'L'
+    }
   }
 
   ngOnInit() {
@@ -22,13 +29,8 @@ export class AjoutOeuvreComponent implements OnInit {
 
     this.proprietaireService.getAll().subscribe(data => {
       this.proprietaires = data;
+      this.oeuvrevente.proprietaire = this.proprietaires[0]; // init with premier propriétaire
     })
-  }
-
-  oeuvrevente = {
-    titreOeuvrevente: "",
-    prixOeuvrevente: "",
-    proprietaire: {}
   }
 
   result = {

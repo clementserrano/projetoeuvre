@@ -27,14 +27,17 @@ export class ModifieOeuvreComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.idOeuvre = +params['idOeuvre'];
-    })
-
-    this.proprietaireService.getAll().subscribe(data => {
-      this.proprietaires = data;
-    })
-
-    this.oeuvreventeService.get(this.idOeuvre).subscribe(data => {
-      this.oeuvrevente = data;
+      this.proprietaireService.getAll().subscribe(data => {
+        this.proprietaires = data;
+        this.oeuvreventeService.get(this.idOeuvre).subscribe(data => {
+          this.oeuvrevente = data;
+          this.proprietaires.forEach(proprietaire => {
+            if (this.oeuvrevente.proprietaire.idProprietaire == proprietaire.idProprietaire) {
+              this.oeuvrevente.proprietaire = proprietaire;
+            }
+          })
+        })
+      })
     })
   }
 
@@ -43,7 +46,8 @@ export class ModifieOeuvreComponent implements OnInit {
     message: ""
   }
 
-  modifyOeuvre(){
+  modifyOeuvre() {
+
     this.oeuvreventeService.add(this.oeuvrevente).subscribe(success => {
       this.result.status = "success";
       this.result.message = "L'oeuvre a été modifiée avec succès !"

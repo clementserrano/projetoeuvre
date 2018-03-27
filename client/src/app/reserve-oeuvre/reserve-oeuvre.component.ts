@@ -22,9 +22,12 @@ export class ReserveOeuvreComponent implements OnInit {
               private reservationService: ReservationService,
               private adherentService: AdherentService) {
     this.reservation = {
-      oeuvrevente: {},
-      adherent: {},
-      dateReservation: null
+      reservationId: {
+        adherent: {},
+        oeuvrevente: {}
+      },
+      dateReservation: null,
+      statut: "reservee"
     }
   }
 
@@ -37,10 +40,11 @@ export class ReserveOeuvreComponent implements OnInit {
 
     this.adherentService.getAll().subscribe(data => {
       this.adherents = data;
+      this.reservation.reservationId.adherent = this.adherents[0]; // init with premier adhérent
     })
 
     this.oeuvreventeService.get(this.idOeuvre).subscribe(data => {
-      this.reservation.oeuvrevente = data;
+      this.reservation.reservationId.oeuvrevente = data;
     })
   }
 
@@ -49,8 +53,8 @@ export class ReserveOeuvreComponent implements OnInit {
     message: ""
   }
 
-  bookOeuvre(){
-    this.reservation.oeuvrevente.etatOeuvrevente = 'R';
+  bookOeuvre() {
+    this.reservation.reservationId.oeuvrevente.etatOeuvrevente = 'R';
     this.reservationService.add(this.reservation).subscribe(success => {
       this.result.status = "success";
       this.result.message = "L'oeuvre a été réservée avec succès !"
