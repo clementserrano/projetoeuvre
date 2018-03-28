@@ -1,18 +1,23 @@
 # Projet Oeuvre
 
+### Développeurs
+- Bastien JACOUD
+- Victor REMOND
+- Clément SERRANO
+
 ### Prérequis
 - Installer Node v9.1.0
 
 ### Pour déployer l'application
-- Se placer dans **/client** et lancer la commande suivante pour installer les **/node_modules** : 
+- Se placer dans **/client** et lancer la commande suivante pour installer les **/node_modules**
 ````
 npm install
 ````
-- Puis lancer la commande suivante pour build l'application Angular : 
+- Puis lancer la commande suivante pour build l'application Angular
 ````
 ng build -prod
 ````
-- Se placer dans **/server** et lancer la commande suivante pour compiler le JAR de l'application : 
+- Se placer dans **/server** et lancer la commande suivante pour compiler le JAR de l'application
 ````
 mvnw clean install
 ````
@@ -20,7 +25,7 @@ mvnw clean install
 ````
 java -jar projetoeuvre-0.0.1-SNAPSHOT.jar
 ````
-- Ouvrir votre navigateur préféré sur [http://localhost:8080](http://localhost:8080) et voilà !
+- Ouvrir votre navigateur préféré sur **[http://localhost:8080](http://localhost:8080)** et voilà !
 
 ### Notes
 
@@ -46,7 +51,7 @@ mvnw spring-boot:run
 
 Pour lancer le client
 ```
-ng serve
+npm start
 ```
 
 Pour créer un nouveau component
