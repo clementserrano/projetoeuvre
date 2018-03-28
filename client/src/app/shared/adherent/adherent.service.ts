@@ -9,10 +9,10 @@ export class AdherentService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//localhost:8080/adherent/getAll');
+    return this.http.get('/api/adherent/getAll');
   }
 
   add(adherent): Observable<any> {
-    return this.http.post('//localhost:8080/adherent/add', adherent);
+    return this.http.post('/api/adherent/add', adherent);
   }
 }

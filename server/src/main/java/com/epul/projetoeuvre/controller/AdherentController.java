@@ -11,20 +11,18 @@ import java.util.List;
  * Created by clementserrano on 24/03/2018.
  */
 @RestController
-@RequestMapping("/adherent")
+@RequestMapping("/api/adherent")
 public class AdherentController {
 
     @Autowired
     private AdherentRepository adherentRepository;
 
     @GetMapping("/getAll")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<Adherent> getAll() {
         return adherentRepository.findAll();
     }
 
     @PostMapping("/add")
-    @CrossOrigin(origins = "http://localhost:4200")
     public Adherent add(@RequestBody Adherent adherent) {
         return adherentRepository.save(adherent);
     }

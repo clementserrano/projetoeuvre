@@ -9,7 +9,7 @@ export class ProprietaireService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//localhost:8080/proprietaire/getAll');
+    return this.http.get('/api/proprietaire/getAll');
   }
 
 }

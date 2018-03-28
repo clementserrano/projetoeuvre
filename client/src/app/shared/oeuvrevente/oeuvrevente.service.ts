@@ -9,15 +9,15 @@ export class OeuvreventeService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//localhost:8080/oeuvrevente/getAll');
+    return this.http.get('/api/oeuvrevente/getAll');
   }
 
   get(idOeuvrevente): Observable<any> {
-    return this.http.get('//localhost:8080/oeuvrevente/get/' + idOeuvrevente);
+    return this.http.get('/api/oeuvrevente/get/' + idOeuvrevente);
   }
 
   add(oeuvrevente): Observable<any> {
-    return this.http.post('//localhost:8080/oeuvrevente/add', oeuvrevente);
+    return this.http.post('/api/oeuvrevente/add', oeuvrevente);
   }
 
 }

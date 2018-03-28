@@ -11,25 +11,22 @@ import java.util.List;
  * Created by clementserrano on 25/03/2018.
  */
 @RestController
-@RequestMapping("/oeuvrevente")
+@RequestMapping("/api/oeuvrevente")
 public class OeuvreventeController {
     @Autowired
     private OeuvreventeRepository oeuvreventeRepository;
 
     @GetMapping("/getAll")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<Oeuvrevente> getAll() {
         return oeuvreventeRepository.findAll();
     }
 
     @GetMapping("/get/{idOeuvrevente}")
-    @CrossOrigin(origins = "http://localhost:4200")
     public Oeuvrevente get(@PathVariable Long idOeuvrevente) {
         return oeuvreventeRepository.getOne(idOeuvrevente);
     }
 
     @PostMapping("/add")
-    @CrossOrigin(origins = "http://localhost:4200")
     public Oeuvrevente add(@RequestBody Oeuvrevente oeuvrevente) {
         return oeuvreventeRepository.save(oeuvrevente);
     }

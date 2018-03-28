@@ -14,13 +14,12 @@ import java.util.List;
  * Created by clementserrano on 25/03/2018.
  */
 @RestController
-@RequestMapping("/proprietaire")
+@RequestMapping("/api/proprietaire")
 public class ProprietaireController {
     @Autowired
     private ProprietaireRepository proprietaireRepository;
 
     @GetMapping("/getAll")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<Proprietaire> getAll() {
         return proprietaireRepository.findAll();
     }

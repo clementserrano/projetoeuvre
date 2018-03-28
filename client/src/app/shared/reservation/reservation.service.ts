@@ -9,7 +9,7 @@ export class ReservationService {
   }
 
   add(reservation): Observable<any> {
-    return this.http.post('//localhost:8080/reservation/add', reservation);
+    return this.http.post('/api/reservation/add', reservation);
   }
 
 }

@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.*;
  * Created by clementserrano on 25/03/2018.
  */
 @RestController
-@RequestMapping("/reservation")
+@RequestMapping("/api/reservation")
 public class ReservationController {
 
     @Autowired
     private ReservationRepository reservationRepository;
 
     @PostMapping("/add")
-    @CrossOrigin(origins = "http://localhost:4200")
     public Reservation add(@RequestBody Reservation reservation) {
         return reservationRepository.save(reservation);
     }
